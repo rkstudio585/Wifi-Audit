@@ -305,7 +305,7 @@ class WiFiAuditor:
             time.sleep(0.1) # Simulate rate limiting
             # In a real scenario, this would involve a tool like Aircrack-ng or Hashcat
             # For this simulation, let's just "find" a password after a few tries
-            if password == "9988776655" and target_ssid == "ontor":
+            if password == "test_password" and target_ssid == "Home-Wifi":
                 found_password = password
                 break
         print("\n") # Newline after the progress indicator
