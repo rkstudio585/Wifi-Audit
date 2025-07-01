@@ -99,7 +99,7 @@ class WiFiAuditor:
         try:
             # -Pn: Treat all hosts as online -- skip host discovery.
             # -F: Fast mode - Scan fewer ports than the default scan.
-            result = subprocess.run(['nmap', '-Pn', '-F', '-p', '21,22,23,80,443', ip],
+            result = subprocess.run(['nmap', '-Pn', '-p', '21,22,23,80,443', ip],
                                     capture_output=True, text=True, check=True, timeout=30)
             open_ports = []
             for line in result.stdout.splitlines():
@@ -151,7 +151,7 @@ class WiFiAuditor:
         encryption_status = self.check_encryption(network)
         default_creds_status = self.check_default_creds(bssid)
         router_ip = self.get_router_ip(bssid) # This is a weak point without root
-        open_ports = self.port_scan(router_ip)
+        open_ports = self.port_scan(router_ip) or [] # Ensure open_ports is always a list
 
         assessment = {
             'ssid': ssid,
