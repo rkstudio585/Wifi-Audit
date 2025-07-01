@@ -133,8 +133,8 @@ class WiFiAuditor:
             score += 8
             threats.append('HIGH: Default credentials')
 
-        if network_assessment['ports']:
-            score += len(network_assessment['ports']) * 1.5 # Each open port adds to risk
+        if network_assessment['open_ports']:
+            score += len(network_assessment['open_ports']) * 1.5 # Each open port adds to risk
             threats.append('MEDIUM: Open management ports')
 
         # Cap score at 10
@@ -305,7 +305,7 @@ class WiFiAuditor:
             time.sleep(0.1) # Simulate rate limiting
             # In a real scenario, this would involve a tool like Aircrack-ng or Hashcat
             # For this simulation, let's just "find" a password after a few tries
-            if password == "password123" and target_ssid == "HomeWiFi":
+            if password == "9988776655" and target_ssid == "ontor":
                 found_password = password
                 break
         print("\n") # Newline after the progress indicator
